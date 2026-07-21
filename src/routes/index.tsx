@@ -6,6 +6,7 @@ import {
   Database, Server, Shield, Cpu, Sparkles, GraduationCap,
   Youtube, BookOpen, Search, Github, Linkedin, Menu, X,
 } from "lucide-react";
+import portraitAsset from "@/assets/kevin-portrait.jpg.asset.json";
 
 export const Route = createFileRoute("/")({
   component: Portfolio,
@@ -209,19 +210,19 @@ function HeroCard() {
           <span className="w-2.5 h-2.5 rounded-full bg-primary" />
         </div>
       </div>
-      <div className="absolute inset-0 flex items-center justify-center">
+      <div className="absolute inset-0 flex items-center justify-center p-10 sm:p-12">
         <motion.div
-          animate={{ rotate: 360 }}
-          transition={{ duration: 30, repeat: Infinity, ease: "linear" }}
-          className="w-56 h-56 rounded-full border-2 border-dashed border-primary/30 flex items-center justify-center"
+          initial={{ opacity: 0, scale: 0.9 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.8, delay: 0.3 }}
+          className="relative w-full h-full rounded-3xl overflow-hidden border border-border/50"
         >
-          <motion.div
-            animate={{ rotate: -360 }}
-            transition={{ duration: 30, repeat: Infinity, ease: "linear" }}
-            className="w-40 h-40 rounded-full bg-gradient-to-br from-primary to-accent flex items-center justify-center text-primary-foreground"
-          >
-            <span className="font-display text-5xl font-bold">KK</span>
-          </motion.div>
+          <img
+            src={portraitAsset.url}
+            alt="Kasumba Kevin"
+            className="w-full h-full object-cover"
+          />
+          <div className="absolute inset-0 bg-gradient-to-t from-background/40 via-transparent to-transparent" />
         </motion.div>
       </div>
       <div className="absolute bottom-6 left-6 right-6 font-mono text-xs space-y-1.5">
