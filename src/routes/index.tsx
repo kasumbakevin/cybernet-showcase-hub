@@ -4,9 +4,38 @@ import { useRef, useState, useEffect } from "react";
 import {
   Mail, Phone, MapPin, ArrowUpRight, Code2, Palette, Network,
   Database, Server, Shield, Cpu, Sparkles, GraduationCap,
-  Youtube, BookOpen, Search, Github, Linkedin, Menu, X,
+  Youtube, BookOpen, Search, Github, Linkedin, Menu, X, Award,
 } from "lucide-react";
 import portraitAsset from "@/assets/kevin-portrait.jpg.asset.json";
+import ciscoCert from "@/assets/cert-cisco.pdf.asset.json";
+import bmCert from "@/assets/cert-brightermonday.pdf.asset.json";
+
+const certifications = [
+  {
+    title: "Computer Hardware Basics",
+    issuer: "Cisco Networking Academy",
+    date: "18 Mar 2025",
+    url: ciscoCert.url,
+  },
+  {
+    title: "Soft Skills Certificate",
+    issuer: "BrighterMonday Uganda · Mastercard Foundation",
+    date: "16 Apr 2026",
+    url: bmCert.url,
+  },
+  {
+    title: "Hikvision Certification",
+    issuer: "Hikvision E-Learning",
+    date: "Completed",
+    url: "https://elearning-assets.hikvision.com/image/784a3a90-1007-4af8-b1c5-2aeb53495000.pdf",
+  },
+  {
+    title: "Hikvision Certification",
+    issuer: "Hikvision E-Learning",
+    date: "Completed",
+    url: "https://elearning-assets.hikvision.com/image/5aa4cf4f-6e6f-4843-a0c8-cfe5ca238d33.pdf",
+  },
+];
 
 export const Route = createFileRoute("/")({
   component: Portfolio,
@@ -64,6 +93,7 @@ function Portfolio() {
       <About />
       <Skills />
       <Experience />
+      <Certifications />
       <Services />
       <Goals />
       <Contact />
@@ -352,9 +382,43 @@ function Experience() {
   );
 }
 
+function Certifications() {
+  return (
+    <Section id="certifications" eyebrow="04 · Certifications" title={<>Credentials I've <span className="text-primary">earned.</span></>}>
+      <div className="grid sm:grid-cols-2 gap-4">
+        {certifications.map((c, i) => (
+          <motion.a
+            key={c.title + i}
+            href={c.url}
+            target="_blank"
+            rel="noopener noreferrer"
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-50px" }}
+            transition={{ duration: 0.5, delay: i * 0.08 }}
+            whileHover={{ y: -4 }}
+            className="group relative rounded-2xl border border-border bg-surface/60 p-6 overflow-hidden flex items-start gap-4"
+          >
+            <div className="absolute -top-16 -right-16 w-40 h-40 rounded-full bg-primary/10 blur-3xl opacity-0 group-hover:opacity-100 transition-opacity" />
+            <div className="w-12 h-12 rounded-xl bg-primary/15 flex items-center justify-center shrink-0">
+              <Award className="w-6 h-6 text-primary" />
+            </div>
+            <div className="flex-1 min-w-0">
+              <div className="font-mono text-xs text-muted-foreground mb-1">{c.date}</div>
+              <h3 className="text-lg font-semibold mb-1 leading-tight">{c.title}</h3>
+              <p className="text-sm text-muted-foreground">{c.issuer}</p>
+            </div>
+            <ArrowUpRight className="w-5 h-5 text-muted-foreground group-hover:text-primary group-hover:-translate-y-1 group-hover:translate-x-1 transition-all shrink-0" />
+          </motion.a>
+        ))}
+      </div>
+    </Section>
+  );
+}
+
 function Services() {
   return (
-    <Section id="services" eyebrow="04 · Services" title={<>What I can help <span className="text-primary">deliver.</span></>}>
+    <Section id="services" eyebrow="05 · Services" title={<>What I can help <span className="text-primary">deliver.</span></>}>
       <p className="text-lg text-muted-foreground max-w-2xl mb-10 -mt-8">
         Trained through study and internship — services aligned with Cybernet Computer and Security LTD's practice.
       </p>
@@ -393,7 +457,7 @@ function Goals() {
     { icon: BookOpen, label: "Watching technology videos" },
   ];
   return (
-    <Section id="goals" eyebrow="05 · Objectives" title={<>Where I'm <span className="text-primary">heading.</span></>}>
+    <Section id="goals" eyebrow="06 · Objectives" title={<>Where I'm <span className="text-primary">heading.</span></>}>
       <div className="grid lg:grid-cols-3 gap-4 mb-16">
         {items.map((g, i) => (
           <motion.div
@@ -436,7 +500,7 @@ function Contact() {
           <div className="absolute -top-20 -right-20 w-72 h-72 rounded-full bg-primary/20 blur-3xl" />
           <div className="absolute -bottom-20 -left-20 w-72 h-72 rounded-full bg-accent/20 blur-3xl" />
           <div className="relative">
-            <div className="font-mono text-xs text-primary uppercase tracking-widest mb-4">06 · Contact</div>
+            <div className="font-mono text-xs text-primary uppercase tracking-widest mb-4">07 · Contact</div>
             <h2 className="text-4xl sm:text-6xl font-semibold mb-6 leading-tight">
               Let's build <span className="text-primary">something useful.</span>
             </h2>
