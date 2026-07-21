@@ -4,9 +4,38 @@ import { useRef, useState, useEffect } from "react";
 import {
   Mail, Phone, MapPin, ArrowUpRight, Code2, Palette, Network,
   Database, Server, Shield, Cpu, Sparkles, GraduationCap,
-  Youtube, BookOpen, Search, Github, Linkedin, Menu, X,
+  Youtube, BookOpen, Search, Github, Linkedin, Menu, X, Award,
 } from "lucide-react";
 import portraitAsset from "@/assets/kevin-portrait.jpg.asset.json";
+import ciscoCert from "@/assets/cert-cisco.pdf.asset.json";
+import bmCert from "@/assets/cert-brightermonday.pdf.asset.json";
+
+const certifications = [
+  {
+    title: "Computer Hardware Basics",
+    issuer: "Cisco Networking Academy",
+    date: "18 Mar 2025",
+    url: ciscoCert.url,
+  },
+  {
+    title: "Soft Skills Certificate",
+    issuer: "BrighterMonday Uganda · Mastercard Foundation",
+    date: "16 Apr 2026",
+    url: bmCert.url,
+  },
+  {
+    title: "Hikvision Certification",
+    issuer: "Hikvision E-Learning",
+    date: "Completed",
+    url: "https://elearning-assets.hikvision.com/image/784a3a90-1007-4af8-b1c5-2aeb53495000.pdf",
+  },
+  {
+    title: "Hikvision Certification",
+    issuer: "Hikvision E-Learning",
+    date: "Completed",
+    url: "https://elearning-assets.hikvision.com/image/5aa4cf4f-6e6f-4843-a0c8-cfe5ca238d33.pdf",
+  },
+];
 
 export const Route = createFileRoute("/")({
   component: Portfolio,
@@ -64,6 +93,7 @@ function Portfolio() {
       <About />
       <Skills />
       <Experience />
+      <Certifications />
       <Services />
       <Goals />
       <Contact />
