@@ -6,6 +6,7 @@ import {
   Database, Server, Shield, Cpu, Sparkles, GraduationCap,
   Youtube, BookOpen, Search, Github, Linkedin, Menu, X,
 } from "lucide-react";
+import portraitAsset from "@/assets/kevin-portrait.jpg.asset.json";
 
 export const Route = createFileRoute("/")({
   component: Portfolio,
