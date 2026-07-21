@@ -7,6 +7,8 @@ import {
   Youtube, BookOpen, Search, Github, Linkedin, Menu, X, Award,
 } from "lucide-react";
 import portraitAsset from "@/assets/kevin-portrait.jpg.asset.json";
+import gradAsset from "@/assets/kevin-graduation.jpg.asset.json";
+import cctvAsset from "@/assets/kevin-cctv.jpg.asset.json";
 import ciscoCert from "@/assets/cert-cisco.pdf.asset.json";
 import bmCert from "@/assets/cert-brightermonday.pdf.asset.json";
 
