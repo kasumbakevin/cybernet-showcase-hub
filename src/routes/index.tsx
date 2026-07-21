@@ -382,6 +382,40 @@ function Experience() {
   );
 }
 
+function Certifications() {
+  return (
+    <Section id="certifications" eyebrow="04 · Certifications" title={<>Credentials I've <span className="text-primary">earned.</span></>}>
+      <div className="grid sm:grid-cols-2 gap-4">
+        {certifications.map((c, i) => (
+          <motion.a
+            key={c.title + i}
+            href={c.url}
+            target="_blank"
+            rel="noopener noreferrer"
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-50px" }}
+            transition={{ duration: 0.5, delay: i * 0.08 }}
+            whileHover={{ y: -4 }}
+            className="group relative rounded-2xl border border-border bg-surface/60 p-6 overflow-hidden flex items-start gap-4"
+          >
+            <div className="absolute -top-16 -right-16 w-40 h-40 rounded-full bg-primary/10 blur-3xl opacity-0 group-hover:opacity-100 transition-opacity" />
+            <div className="w-12 h-12 rounded-xl bg-primary/15 flex items-center justify-center shrink-0">
+              <Award className="w-6 h-6 text-primary" />
+            </div>
+            <div className="flex-1 min-w-0">
+              <div className="font-mono text-xs text-muted-foreground mb-1">{c.date}</div>
+              <h3 className="text-lg font-semibold mb-1 leading-tight">{c.title}</h3>
+              <p className="text-sm text-muted-foreground">{c.issuer}</p>
+            </div>
+            <ArrowUpRight className="w-5 h-5 text-muted-foreground group-hover:text-primary group-hover:-translate-y-1 group-hover:translate-x-1 transition-all shrink-0" />
+          </motion.a>
+        ))}
+      </div>
+    </Section>
+  );
+}
+
 function Services() {
   return (
     <Section id="services" eyebrow="04 · Services" title={<>What I can help <span className="text-primary">deliver.</span></>}>
