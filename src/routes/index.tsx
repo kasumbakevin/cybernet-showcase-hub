@@ -418,7 +418,7 @@ function Certifications() {
 
 function Services() {
   return (
-    <Section id="services" eyebrow="04 · Services" title={<>What I can help <span className="text-primary">deliver.</span></>}>
+    <Section id="services" eyebrow="05 · Services" title={<>What I can help <span className="text-primary">deliver.</span></>}>
       <p className="text-lg text-muted-foreground max-w-2xl mb-10 -mt-8">
         Trained through study and internship — services aligned with Cybernet Computer and Security LTD's practice.
       </p>
@@ -457,7 +457,7 @@ function Goals() {
     { icon: BookOpen, label: "Watching technology videos" },
   ];
   return (
-    <Section id="goals" eyebrow="05 · Objectives" title={<>Where I'm <span className="text-primary">heading.</span></>}>
+    <Section id="goals" eyebrow="06 · Objectives" title={<>Where I'm <span className="text-primary">heading.</span></>}>
       <div className="grid lg:grid-cols-3 gap-4 mb-16">
         {items.map((g, i) => (
           <motion.div
