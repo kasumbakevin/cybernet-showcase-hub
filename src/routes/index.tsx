@@ -500,7 +500,7 @@ function Contact() {
           <div className="absolute -top-20 -right-20 w-72 h-72 rounded-full bg-primary/20 blur-3xl" />
           <div className="absolute -bottom-20 -left-20 w-72 h-72 rounded-full bg-accent/20 blur-3xl" />
           <div className="relative">
-            <div className="font-mono text-xs text-primary uppercase tracking-widest mb-4">06 · Contact</div>
+            <div className="font-mono text-xs text-primary uppercase tracking-widest mb-4">07 · Contact</div>
             <h2 className="text-4xl sm:text-6xl font-semibold mb-6 leading-tight">
               Let's build <span className="text-primary">something useful.</span>
             </h2>
