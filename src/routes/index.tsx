@@ -7,6 +7,8 @@ import {
   Youtube, BookOpen, Search, Github, Linkedin, Menu, X, Award,
 } from "lucide-react";
 import portraitAsset from "@/assets/kevin-portrait.jpg.asset.json";
+import gradAsset from "@/assets/kevin-graduation.jpg.asset.json";
+import cctvAsset from "@/assets/kevin-cctv.jpg.asset.json";
 import ciscoCert from "@/assets/cert-cisco.pdf.asset.json";
 import bmCert from "@/assets/cert-brightermonday.pdf.asset.json";
 
@@ -260,6 +262,38 @@ function HeroCard() {
         <div className="flex justify-between"><span className="text-muted-foreground">focus</span><span>IT + Design</span></div>
         <div className="flex justify-between"><span className="text-muted-foreground">status</span><span className="text-primary">● online</span></div>
       </div>
+
+      {/* Floating graduation photo */}
+      <motion.div
+        initial={{ opacity: 0, x: -40, y: -20, rotate: -12 }}
+        animate={{ opacity: 1, x: 0, y: 0, rotate: -8 }}
+        transition={{ duration: 0.9, delay: 0.6 }}
+        className="absolute -left-6 sm:-left-10 top-16 w-28 sm:w-36 aspect-[3/4] rounded-2xl overflow-hidden border border-border bg-surface shadow-2xl glow-ring"
+      >
+        <motion.img
+          src={gradAsset.url}
+          alt="Kasumba Kevin graduation"
+          className="w-full h-full object-cover"
+          animate={{ y: [0, -8, 0] }}
+          transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+        />
+      </motion.div>
+
+      {/* Floating CCTV / internship photo */}
+      <motion.div
+        initial={{ opacity: 0, x: 40, y: 20, rotate: 12 }}
+        animate={{ opacity: 1, x: 0, y: 0, rotate: 8 }}
+        transition={{ duration: 0.9, delay: 0.8 }}
+        className="absolute -right-6 sm:-right-10 bottom-16 w-28 sm:w-36 aspect-[3/4] rounded-2xl overflow-hidden border border-border bg-surface shadow-2xl glow-ring"
+      >
+        <motion.img
+          src={cctvAsset.url}
+          alt="Kevin installing a CCTV camera at Cybernet"
+          className="w-full h-full object-cover"
+          animate={{ y: [0, 8, 0] }}
+          transition={{ duration: 4.5, repeat: Infinity, ease: "easeInOut", delay: 0.5 }}
+        />
+      </motion.div>
     </motion.div>
   );
 }
