@@ -226,15 +226,45 @@ function Hero({
 }
 
 function HeroCard() {
+  const images = [
+    { src: portraitAsset.url, alt: "Kasumba Kevin portrait" },
+    { src: gradAsset.url, alt: "Kasumba Kevin graduation" },
+    { src: cctvAsset.url, alt: "Kevin installing a CCTV camera at Cybernet" },
+  ];
+  const [index, setIndex] = useState(0);
+  const [paused, setPaused] = useState(false);
+  const total = images.length;
+
+  useEffect(() => {
+    if (paused) return;
+    const id = setInterval(() => setIndex((i) => (i + 1) % total), 3500);
+    return () => clearInterval(id);
+  }, [paused, total]);
+
+  const go = (dir: number) => setIndex((i) => (i + dir + total) % total);
+
+  const touchX = useRef<number | null>(null);
+  const onTouchStart = (e: React.TouchEvent) => { touchX.current = e.touches[0].clientX; };
+  const onTouchEnd = (e: React.TouchEvent) => {
+    if (touchX.current == null) return;
+    const dx = e.changedTouches[0].clientX - touchX.current;
+    if (Math.abs(dx) > 40) go(dx < 0 ? 1 : -1);
+    touchX.current = null;
+  };
+
   return (
     <motion.div
       initial={{ opacity: 0, scale: 0.9, rotate: 2 }}
       animate={{ opacity: 1, scale: 1, rotate: 0 }}
       transition={{ duration: 0.8, delay: 0.2 }}
       className="relative aspect-[4/5] rounded-3xl border border-border bg-surface/80 backdrop-blur overflow-hidden glow-ring"
+      onMouseEnter={() => setPaused(true)}
+      onMouseLeave={() => setPaused(false)}
+      onTouchStart={onTouchStart}
+      onTouchEnd={onTouchEnd}
     >
       <div className="absolute inset-0 bg-gradient-to-br from-primary/20 via-transparent to-accent/20" />
-      <div className="absolute top-6 left-6 right-6 flex items-center justify-between font-mono text-xs">
+      <div className="absolute top-6 left-6 right-6 z-20 flex items-center justify-between font-mono text-xs">
         <span className="text-muted-foreground">~/portfolio</span>
         <div className="flex gap-1.5">
           <span className="w-2.5 h-2.5 rounded-full bg-muted-foreground/40" />
@@ -242,58 +272,55 @@ function HeroCard() {
           <span className="w-2.5 h-2.5 rounded-full bg-primary" />
         </div>
       </div>
-      <div className="absolute inset-0 flex items-center justify-center p-10 sm:p-12">
-        <motion.div
-          initial={{ opacity: 0, scale: 0.9 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.8, delay: 0.3 }}
-          className="relative w-full h-full rounded-3xl overflow-hidden border border-border/50"
-        >
-          <img
-            src={portraitAsset.url}
-            alt="Kasumba Kevin"
-            className="w-full h-full object-cover"
-          />
+
+      <div className="absolute inset-0 p-10 sm:p-12">
+        <div className="relative w-full h-full rounded-3xl overflow-hidden border border-border/50">
+          {images.map((img, i) => (
+            <motion.img
+              key={img.src}
+              src={img.src}
+              alt={img.alt}
+              className="absolute inset-0 w-full h-full object-cover"
+              initial={false}
+              animate={{ opacity: i === index ? 1 : 0, scale: i === index ? 1 : 1.05 }}
+              transition={{ duration: 0.8, ease: "easeInOut" }}
+            />
+          ))}
           <div className="absolute inset-0 bg-gradient-to-t from-background/40 via-transparent to-transparent" />
-        </motion.div>
+        </div>
       </div>
-      <div className="absolute bottom-6 left-6 right-6 font-mono text-xs space-y-1.5">
+
+      <button
+        aria-label="Previous image"
+        onClick={() => go(-1)}
+        className="absolute left-3 top-1/2 -translate-y-1/2 z-20 w-9 h-9 rounded-full bg-background/70 backdrop-blur border border-border flex items-center justify-center hover:bg-background transition"
+      >
+        <ArrowUpRight className="w-4 h-4 -rotate-[135deg]" />
+      </button>
+      <button
+        aria-label="Next image"
+        onClick={() => go(1)}
+        className="absolute right-3 top-1/2 -translate-y-1/2 z-20 w-9 h-9 rounded-full bg-background/70 backdrop-blur border border-border flex items-center justify-center hover:bg-background transition"
+      >
+        <ArrowUpRight className="w-4 h-4 rotate-45" />
+      </button>
+
+      <div className="absolute bottom-20 left-0 right-0 z-20 flex justify-center gap-2">
+        {images.map((_, i) => (
+          <button
+            key={i}
+            aria-label={`Show image ${i + 1}`}
+            onClick={() => setIndex(i)}
+            className={`h-1.5 rounded-full transition-all ${i === index ? "w-6 bg-primary" : "w-1.5 bg-muted-foreground/40 hover:bg-muted-foreground"}`}
+          />
+        ))}
+      </div>
+
+      <div className="absolute bottom-6 left-6 right-6 z-20 font-mono text-xs space-y-1.5">
         <div className="flex justify-between"><span className="text-muted-foreground">role</span><span>Intern · Cybernet</span></div>
         <div className="flex justify-between"><span className="text-muted-foreground">focus</span><span>IT + Design</span></div>
         <div className="flex justify-between"><span className="text-muted-foreground">status</span><span className="text-primary">● online</span></div>
       </div>
-
-      {/* Floating graduation photo */}
-      <motion.div
-        initial={{ opacity: 0, x: -40, y: -20, rotate: -12 }}
-        animate={{ opacity: 1, x: 0, y: 0, rotate: -8 }}
-        transition={{ duration: 0.9, delay: 0.6 }}
-        className="absolute -left-6 sm:-left-10 top-16 w-28 sm:w-36 aspect-[3/4] rounded-2xl overflow-hidden border border-border bg-surface shadow-2xl glow-ring"
-      >
-        <motion.img
-          src={gradAsset.url}
-          alt="Kasumba Kevin graduation"
-          className="w-full h-full object-cover"
-          animate={{ y: [0, -8, 0] }}
-          transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-        />
-      </motion.div>
-
-      {/* Floating CCTV / internship photo */}
-      <motion.div
-        initial={{ opacity: 0, x: 40, y: 20, rotate: 12 }}
-        animate={{ opacity: 1, x: 0, y: 0, rotate: 8 }}
-        transition={{ duration: 0.9, delay: 0.8 }}
-        className="absolute -right-6 sm:-right-10 bottom-16 w-28 sm:w-36 aspect-[3/4] rounded-2xl overflow-hidden border border-border bg-surface shadow-2xl glow-ring"
-      >
-        <motion.img
-          src={cctvAsset.url}
-          alt="Kevin installing a CCTV camera at Cybernet"
-          className="w-full h-full object-cover"
-          animate={{ y: [0, 8, 0] }}
-          transition={{ duration: 4.5, repeat: Infinity, ease: "easeInOut", delay: 0.5 }}
-        />
-      </motion.div>
     </motion.div>
   );
 }
