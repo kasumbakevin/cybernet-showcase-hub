@@ -16,6 +16,25 @@ import graphics1 from "@/assets/graphics-1.jpg.asset.json";
 import graphics2 from "@/assets/graphics-2.jpg.asset.json";
 import graphics3 from "@/assets/graphics-3.jpg.asset.json";
 import graphics4 from "@/assets/graphics-4.jpg.asset.json";
+import gal1 from "@/assets/gallery-20260625_103851.jpg.asset.json";
+import gal2 from "@/assets/gallery-20260706_100309.jpg.asset.json";
+import gal3 from "@/assets/gallery-20260706_100634.jpg.asset.json";
+import gal4 from "@/assets/gallery-20260706_100650.jpg.asset.json";
+import gal5 from "@/assets/gallery-20260712_100234.jpg.asset.json";
+import gal6 from "@/assets/gallery-20260712_100302.jpg.asset.json";
+import gal7 from "@/assets/gallery-20260712_100317.jpg.asset.json";
+import gal8 from "@/assets/gallery-20260622_231353.jpg.asset.json";
+
+const gallery = [
+  { src: gal6.url, title: "CCTV Camera Setup", tag: "Cybernet Internship" },
+  { src: gal2.url, title: "Rack & Switch Wiring", tag: "Network Infrastructure" },
+  { src: gal4.url, title: "LAN Cable Testing", tag: "Cable Certification" },
+  { src: gal3.url, title: "Signal Diagnostics", tag: "Field Service" },
+  { src: gal5.url, title: "Spy Device Inspection", tag: "Security Hardware" },
+  { src: gal1.url, title: "Laptop Repair Bench", tag: "Hardware Support" },
+  { src: gal7.url, title: "Team Session", tag: "Behind the Scenes" },
+  { src: gal8.url, title: "APN Tutorial Thumbnail", tag: "YouTube · TechKevin" },
+];
 
 const socials = {
   github: "https://github.com/kasumbakevin",
@@ -127,6 +146,7 @@ function Portfolio() {
       <Experience />
       <Certifications />
       <Graphics />
+      <Gallery />
       <Projects />
       <Services />
       <Goals />
@@ -146,7 +166,7 @@ function Nav() {
   }, []);
   const links = [
     ["About", "about"], ["Skills", "skills"], ["Graphics", "graphics"],
-    ["Projects", "projects"], ["Services", "services"], ["Contact", "contact"],
+    ["Gallery", "gallery"], ["Projects", "projects"], ["Contact", "contact"],
   ] as const;
 
   return (
@@ -477,9 +497,36 @@ function Graphics() {
   );
 }
 
+function Gallery() {
+  return (
+    <Section id="gallery" eyebrow="06 · Gallery" title={<>Moments from the <span className="text-primary">field.</span></>}>
+      <p className="text-lg text-muted-foreground max-w-2xl mb-10 -mt-8">
+        Snapshots from my internship at Cybernet Computer and Security LTD — CCTV installs, network rack wiring, cable testing and hardware diagnostics.
+      </p>
+      <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 sm:gap-4">
+        {gallery.map((g, i) => (
+          <motion.figure key={g.src} initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-50px" }} transition={{ duration: 0.5, delay: i * 0.06 }}
+            whileHover={{ y: -4 }}
+            className={`group relative rounded-2xl border border-border bg-surface/60 overflow-hidden ${i % 5 === 0 ? "md:row-span-2 md:col-span-1" : ""}`}>
+            <div className={`overflow-hidden ${i % 5 === 0 ? "aspect-[3/4]" : "aspect-square"}`}>
+              <img src={g.src} alt={g.title} loading="lazy"
+                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+            </div>
+            <figcaption className="absolute inset-x-0 bottom-0 p-3 sm:p-4 bg-gradient-to-t from-background/95 via-background/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity">
+              <div className="font-mono text-[10px] sm:text-xs text-primary uppercase tracking-widest mb-0.5">{g.tag}</div>
+              <div className="text-xs sm:text-sm font-semibold">{g.title}</div>
+            </figcaption>
+          </motion.figure>
+        ))}
+      </div>
+    </Section>
+  );
+}
+
 function Projects() {
   return (
-    <Section id="projects" eyebrow="06 · Projects" title={<>Things I've <span className="text-primary">built.</span></>}>
+    <Section id="projects" eyebrow="07 · Projects" title={<>Things I've <span className="text-primary">built.</span></>}>
       <p className="text-lg text-muted-foreground max-w-2xl mb-10 -mt-8">
         Selected repositories from{" "}
         <a href={socials.github} target="_blank" rel="noopener noreferrer" className="text-foreground underline underline-offset-4 hover:text-primary">
@@ -524,7 +571,7 @@ function Projects() {
 
 function Services() {
   return (
-    <Section id="services" eyebrow="07 · Services" title={<>What I can help <span className="text-primary">deliver.</span></>}>
+    <Section id="services" eyebrow="08 · Services" title={<>What I can help <span className="text-primary">deliver.</span></>}>
       <p className="text-lg text-muted-foreground max-w-2xl mb-10 -mt-8">
         Trained through study and internship — services aligned with Cybernet Computer and Security LTD's practice.
       </p>
@@ -559,7 +606,7 @@ function Goals() {
     { icon: BookOpen, label: "Watching technology videos" },
   ];
   return (
-    <Section id="goals" eyebrow="08 · Objectives" title={<>Where I'm <span className="text-primary">heading.</span></>}>
+    <Section id="goals" eyebrow="09 · Objectives" title={<>Where I'm <span className="text-primary">heading.</span></>}>
       <div className="grid lg:grid-cols-3 gap-4 mb-16">
         {items.map((g, i) => (
           <motion.div key={g.title} initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }}
@@ -597,7 +644,7 @@ function Contact() {
           <div className="absolute -top-20 -right-20 w-72 h-72 rounded-full bg-primary/20 blur-3xl" />
           <div className="absolute -bottom-20 -left-20 w-72 h-72 rounded-full bg-accent/20 blur-3xl" />
           <div className="relative">
-            <div className="font-mono text-xs text-primary uppercase tracking-widest mb-4">09 · Contact</div>
+            <div className="font-mono text-xs text-primary uppercase tracking-widest mb-4">10 · Contact</div>
             <h2 className="text-4xl sm:text-6xl font-semibold mb-6 leading-tight">
               Let's build <span className="text-primary">something useful.</span>
             </h2>
