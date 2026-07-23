@@ -16,6 +16,25 @@ import graphics1 from "@/assets/graphics-1.jpg.asset.json";
 import graphics2 from "@/assets/graphics-2.jpg.asset.json";
 import graphics3 from "@/assets/graphics-3.jpg.asset.json";
 import graphics4 from "@/assets/graphics-4.jpg.asset.json";
+import gal1 from "@/assets/gallery-20260625_103851.jpg.asset.json";
+import gal2 from "@/assets/gallery-20260706_100309.jpg.asset.json";
+import gal3 from "@/assets/gallery-20260706_100634.jpg.asset.json";
+import gal4 from "@/assets/gallery-20260706_100650.jpg.asset.json";
+import gal5 from "@/assets/gallery-20260712_100234.jpg.asset.json";
+import gal6 from "@/assets/gallery-20260712_100302.jpg.asset.json";
+import gal7 from "@/assets/gallery-20260712_100317.jpg.asset.json";
+import gal8 from "@/assets/gallery-20260622_231353.jpg.asset.json";
+
+const gallery = [
+  { src: gal6.url, title: "CCTV Camera Setup", tag: "Cybernet Internship" },
+  { src: gal2.url, title: "Rack & Switch Wiring", tag: "Network Infrastructure" },
+  { src: gal4.url, title: "LAN Cable Testing", tag: "Cable Certification" },
+  { src: gal3.url, title: "Signal Diagnostics", tag: "Field Service" },
+  { src: gal5.url, title: "Spy Device Inspection", tag: "Security Hardware" },
+  { src: gal1.url, title: "Laptop Repair Bench", tag: "Hardware Support" },
+  { src: gal7.url, title: "Team Session", tag: "Behind the Scenes" },
+  { src: gal8.url, title: "APN Tutorial Thumbnail", tag: "YouTube · TechKevin" },
+];
 
 const socials = {
   github: "https://github.com/kasumbakevin",
@@ -127,6 +146,7 @@ function Portfolio() {
       <Experience />
       <Certifications />
       <Graphics />
+      <Gallery />
       <Projects />
       <Services />
       <Goals />
@@ -146,7 +166,7 @@ function Nav() {
   }, []);
   const links = [
     ["About", "about"], ["Skills", "skills"], ["Graphics", "graphics"],
-    ["Projects", "projects"], ["Services", "services"], ["Contact", "contact"],
+    ["Gallery", "gallery"], ["Projects", "projects"], ["Contact", "contact"],
   ] as const;
 
   return (
