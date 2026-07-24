@@ -59,7 +59,7 @@ const projects = [
   },
   {
     name: "Jeff Collection Clothings",
-    description: "Online catalogue for Jeff Clothes showing different styles and collections — HTML, CSS and JavaScript.",
+    description: "Online catalogue for Jeff Clothes showing different styles and collections - HTML, CSS and JavaScript.",
     language: "HTML",
     url: "https://github.com/kasumbakevin/jeffCollectionClothingsWebiste",
   },
@@ -77,13 +77,13 @@ const projects = [
   },
   {
     name: "Rock Paper Scissors",
-    description: "A simple rock–paper–scissors game written in Python.",
+    description: "A simple rock-paper-scissors game written in Python.",
     language: "Python",
     url: "https://github.com/kasumbakevin/RockPaperScissorsGame",
   },
   {
     name: "GitHub Profile",
-    description: "All repositories and config files — the full open-source workspace.",
+    description: "All repositories and config files - the full open-source workspace.",
     language: "Profile",
     url: "https://github.com/kasumbakevin",
   },
@@ -117,12 +117,12 @@ const services = [
 ];
 
 const timeline = [
-  { period: "2024 — Present", title: "IT & Security Intern", org: "Cybernet Computer and Security LTD", body: "Practical exposure to system administration, networking, and IT security operations. Supporting real client environments while sharpening technical craft." },
+  { period: "2024 - Present", title: "IT & Security Intern", org: "Cybernet Computer and Security LTD", body: "Practical exposure to system administration, networking, and IT security operations. Supporting real client environments while sharpening technical craft." },
   { period: "In progress", title: "Bachelor of Information Technology", org: "Muteesa I Royal University, Uganda", body: "Building a rigorous foundation in programming, databases, networks and modern IT systems." },
   { period: "Ongoing", title: "Online Certifications", org: "Self-directed learning", body: "Multiple certifications strengthening technical and professional skills across the IT stack." },
 ];
 
-// TikTok icon (lucide has no TikTok — inline SVG)
+// TikTok icon (lucide has no TikTok - inline SVG)
 function TikTokIcon({ className }: { className?: string }) {
   return (
     <svg viewBox="0 0 24 24" fill="currentColor" className={className} aria-hidden="true">
@@ -224,7 +224,7 @@ function Hero({ heroRef, y, opacity }: { heroRef: React.RefObject<HTMLDivElement
           </motion.h1>
           <motion.p initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.8, delay: 0.3 }}
             className="mt-6 max-w-xl text-lg text-muted-foreground leading-relaxed">
-            IT graduate building practical systems, clean interfaces and secure networks — currently interning at{" "}
+            IT graduate building practical systems, clean interfaces and secure networks - currently interning at{" "}
             <span className="text-foreground font-medium">Cybernet Computer and Security LTD</span>.
           </motion.p>
           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.5 }}
@@ -464,7 +464,7 @@ function Graphics() {
   return (
     <Section id="graphics" eyebrow="05 · Graphics" title={<>Design work with <span className="text-primary">intent.</span></>}>
       <p className="text-lg text-muted-foreground max-w-2xl mb-10 -mt-8">
-        A selection of brand, poster and print pieces — combining clean layout, bold typography and purposeful color.
+        A selection of brand, poster and print pieces - combining clean layout, bold typography and purposeful color.
       </p>
       <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
         {graphics.map((g, i) => (
@@ -501,7 +501,7 @@ function Gallery() {
   return (
     <Section id="gallery" eyebrow="06 · Gallery" title={<>Moments from the <span className="text-primary">field.</span></>}>
       <p className="text-lg text-muted-foreground max-w-2xl mb-10 -mt-8">
-        Snapshots from my internship at Cybernet Computer and Security LTD — CCTV installs, network rack wiring, cable testing and hardware diagnostics.
+        Snapshots from my internship at Cybernet Computer and Security LTD - CCTV installs, network rack wiring, cable testing and hardware diagnostics.
       </p>
       <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 sm:gap-4">
         {gallery.map((g, i) => (
@@ -531,7 +531,7 @@ function Projects() {
         Selected repositories from{" "}
         <a href={socials.github} target="_blank" rel="noopener noreferrer" className="text-foreground underline underline-offset-4 hover:text-primary">
           github.com/kasumbakevin
-        </a>{" "}— code, games and web experiments.
+        </a>{" "}- code, games and web experiments.
       </p>
       <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
         {projects.map((p, i) => (
@@ -573,7 +573,7 @@ function Services() {
   return (
     <Section id="services" eyebrow="08 · Services" title={<>What I can help <span className="text-primary">deliver.</span></>}>
       <p className="text-lg text-muted-foreground max-w-2xl mb-10 -mt-8">
-        Trained through study and internship — services aligned with Cybernet Computer and Security LTD's practice.
+        Trained through study and internship - services aligned with Cybernet Computer and Security LTD's practice.
       </p>
       <div className="grid md:grid-cols-2 gap-px bg-border rounded-3xl overflow-hidden border border-border">
         {services.map((s, i) => (
@@ -649,7 +649,7 @@ function Contact() {
               Let's build <span className="text-primary">something useful.</span>
             </h2>
             <p className="text-lg text-muted-foreground max-w-xl mb-10">
-              Open to internships, freelance design and IT projects. Reach out — I reply quickly.
+              Open to internships, freelance design and IT projects. Reach out - I reply quickly.
             </p>
             <div className="grid sm:grid-cols-2 gap-4 mb-8">
               <a href="mailto:kasumbakevin123@gmail.com" className="flex items-center gap-4 rounded-2xl border border-border bg-background/50 backdrop-blur p-5 hover:border-primary transition group">
